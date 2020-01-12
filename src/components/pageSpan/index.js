@@ -46,7 +46,7 @@ function PageNumbers(props) {
       >
         {Array.from(
           { length: props.pageInfo.total },
-          (v, k) => k + props.pageInfo.total / 10
+          (v, k) => k + Math.ceil(props.pageInfo.total / 10)
         ).map(number => (
           <option key={number} value={number}>
             {number}
