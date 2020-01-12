@@ -13,6 +13,16 @@ import sortUp from "../../assets/sort-up.png";
 import sortDown from "../../assets/sort-down.png";
 import "./homepage.scss";
 
+const tableHeader = [
+  { name: "name", sort: true },
+  { name: "username", sort: false },
+  { name: "email", sort: true },
+  { name: "address", sort: false },
+  { name: "phone", sort: false },
+  { name: "website", sort: false },
+  { name: "company", sort: false },
+  { name: "actions", sort: false }
+];
 function HomePage(props) {
   const filteredUsers = users =>
     users.users
@@ -93,44 +103,28 @@ function HomePage(props) {
       <table className="table">
         <thead>
           <tr>
-            <th>
-              <div className="image_heading">
-                <span>Name</span>
-                <img
-                  alt="Sort icon"
-                  src={
-                    props.users.sortBy !== "name"
-                      ? sort
-                      : props.users.sortOrder === "asc"
-                      ? sortDown
-                      : sortUp
-                  }
-                  onClick={() => props.sortByField("name")}
-                />
-              </div>
-            </th>
-            <th>Username</th>
-            <th>
-              <div className="image_heading">
-                <span>Email</span>
-                <img
-                  alt="Sort icon"
-                  src={
-                    props.users.sortBy !== "email"
-                      ? sort
-                      : props.users.sortOrder === "asc"
-                      ? sortDown
-                      : sortUp
-                  }
-                  onClick={() => props.sortByField("email")}
-                />
-              </div>
-            </th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Website</th>
-            <th>Company</th>
-            <th>Actions</th>
+            {tableHeader.map(header =>
+              header.sort ? (
+                <th key={header.name}>
+                  <div className="image_heading">
+                    <span>{header.name}</span>
+                    <img
+                      alt="Sort icon"
+                      src={
+                        props.users.sortBy !== header.name
+                          ? sort
+                          : props.users.sortOrder === "asc"
+                          ? sortDown
+                          : sortUp
+                      }
+                      onClick={() => props.sortByField(header.name)}
+                    />
+                  </div>
+                </th>
+              ) : (
+                <th key={header.name}>{header.name}</th>
+              )
+            )}
           </tr>
         </thead>
         <tbody>{renderUsers(displayUsers)}</tbody>
