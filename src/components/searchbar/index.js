@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { onSearch } from "../../modules/login";
+import { USER_LOGIN_SUCCESS } from "../../constants";
 
 import "./searchbar.scss";
 
@@ -11,7 +12,10 @@ function SearchBar(props) {
 
   const onSearchClicked = () => {
     console.log(props.login.searchTextCount);
-    if (props.login.searchTextCount < 5) {
+    if (
+      props.login.searchTextCount < 5 &&
+      props.login.status !== USER_LOGIN_SUCCESS
+    ) {
       props.onSearch();
       props.handleSearch(searchtext);
     } else {

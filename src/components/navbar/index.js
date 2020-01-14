@@ -1,7 +1,7 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { logout } from "../../modules/login";
 import { USER_LOGIN_SUCCESS } from "../../constants";
@@ -15,6 +15,7 @@ const navBar = [
 ];
 
 function Navbar(props) {
+  let location = useLocation();
   return (
     <div className="nav_bar">
       {navBar.map(item => (
@@ -28,7 +29,14 @@ function Navbar(props) {
       {props.login.status === USER_LOGIN_SUCCESS ? (
         <div>{props.login.userEmail}</div>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link
+          to={{
+            pathname: "/login",
+            state: { from: location.pathname }
+          }}
+        >
+          Login
+        </Link>
       )}
     </div>
   );
