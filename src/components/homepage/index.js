@@ -17,7 +17,6 @@ import "./homepage.scss";
 
 function HomePage(props) {
   const [displayUsers, setDisplayUsers] = useState(false);
-  const [validAlbumIds, setValidAlbumIds] = useState([]);
 
   useEffect(() => {
     if (

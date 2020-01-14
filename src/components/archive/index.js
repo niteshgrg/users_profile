@@ -61,10 +61,10 @@ function Archive(props) {
                         {photos[id].map(picture => (
                           <div key={picture.id} className="picture_cell">
                             <span>{picture.title}</span>
+
                             <LazyLoad
                               width={200}
                               height={200}
-                              debounce={false}
                               offsetVertical={500}
                             >
                               <Img
