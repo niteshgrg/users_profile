@@ -13,8 +13,8 @@ function SearchBar(props) {
   const onSearchClicked = () => {
     console.log(props.login.searchTextCount);
     if (
-      props.login.searchTextCount < 5 &&
-      props.login.status !== USER_LOGIN_SUCCESS
+      props.login.searchTextCount < 5 ||
+      props.login.status === USER_LOGIN_SUCCESS
     ) {
       props.onSearch();
       props.handleSearch(searchtext);
