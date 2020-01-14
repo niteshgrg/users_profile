@@ -6,12 +6,12 @@ import LazyLoad from "react-lazy-load";
 import Img from "react-image";
 
 import { USER_DATA_RECIEVED } from "../../constants";
+import SearchBar from "../searchbar";
 
 import "./archive.scss";
 
 function Archive(props) {
   let history = useHistory();
-  const [searchtext, setSearchtext] = useState("");
   const [users, setUsers] = useState(props.users.users);
   const [albums, setAlbums] = useState(props.albums.albums);
   const [photos, setPhotos] = useState(props.photos.photos);
@@ -23,7 +23,7 @@ function Archive(props) {
     // eslint-disable-next-line
   }, [props.users.status]);
 
-  const handleSearch = () => {
+  const handleSearch = searchtext => {
     let tempAlbums = Object.assign({}, props.albums.albums);
     for (let i in tempAlbums) {
       tempAlbums[i] = tempAlbums[i].filter(album =>
@@ -43,11 +43,7 @@ function Archive(props) {
 
   return (
     <div className="archive">
-      <input
-        value={searchtext}
-        onChange={e => setSearchtext(e.target.value)}
-      ></input>
-      <button onClick={handleSearch}>Search</button>
+      <SearchBar handleSearch={handleSearch} />
       {users.map(user => {
         if (user.id in albums) {
           let albumIds = albums[user.id]

@@ -1,4 +1,9 @@
-import { USER_LOGIN_SUCCESS, USER_LOGIN_ERROR, LOGOUT } from "../constants";
+import {
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
+  LOGOUT,
+  SEARCH
+} from "../constants";
 
 let initialState = {
   status: null,
@@ -28,6 +33,11 @@ export default (state = initialState, action) => {
       };
     case LOGOUT:
       return { status: null, searchTextCount: 0 };
+    case SEARCH:
+      return {
+        ...state,
+        searchTextCount: state.searchTextCount + 1
+      };
     default:
       return state;
   }
@@ -58,6 +68,14 @@ export const logout = () => {
     window.localStorage.removeItem("user");
     dispatch({
       type: LOGOUT
+    });
+  };
+};
+
+export const onSearch = () => {
+  return dispatch => {
+    dispatch({
+      type: SEARCH
     });
   };
 };

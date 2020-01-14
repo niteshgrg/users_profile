@@ -8,3 +8,4 @@ export const PHOTOS_DATA_RECIEVED = "PHOTOS_DATA_RECIEVED";
 export const GET_USERS_DATA = "GET_USERS_DATA";
 export const USER_DATA_RECIEVED = "USER_DATA_RECIEVED";
 export const FIELDS_EMPTY = "FIELDS_EMPTY";
+export const SEARCH = "SEARCH";
