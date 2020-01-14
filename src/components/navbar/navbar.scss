@@ -1,0 +1,15 @@
+.nav_bar {
+  display: flex;
+  text-transform: capitalize;
+  justify-content: space-between;
+  background-color: #00000f;
+  color: #fff;
+  height: 20px;
+  padding: 20px;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

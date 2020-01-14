@@ -1,45 +1,25 @@
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  color: #4a4a4d;
-  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width: 100%;
-
-  tr {
-    overflow-x: scroll;
+.app {
+  a {
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
   }
 
-  th,
-  td {
-    padding: 15px 15px;
-    vertical-align: middle;
+  .user_style {
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+  }
+
+  .album_style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     img {
-      width: 15px;
-      height: 15px;
-      margin: auto;
-    }
-
-    .image_heading {
-      display: flex;
+      width: 200px;
+      height: 200px;
     }
   }
-
-  thead tr th {
-    padding: 15px 15px;
-    border: 1px solid transparent;
-    text-align: left;
-    text-transform: capitalize;
-  }
-
-  tbody {
-    max-width: 100%;
-  }
-}
-
-tbody tr:nth-child(odd) {
-  background: #f0f0f2;
-}
-tbody tr:hover {
-  background: #f0f0f2;
 }
